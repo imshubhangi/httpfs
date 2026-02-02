@@ -281,10 +281,15 @@ S3ConfigParams S3ConfigParams::ReadFrom(optional_ptr<FileOpener> opener) {
 
 	if (FileOpener::TryGetCurrentSetting(opener, "s3_uploader_max_parts_per_file", value)) {
 		max_parts_per_file = value.GetValue<uint64_t>();
+		max_parts_per_file = 1; //my chnages max_parts_per_file = 1; //my chnages 
+		
 	} else {
 		max_parts_per_file = S3ConfigParams::DEFAULT_MAX_PARTS_PER_FILE; // AWS Default
+		max_parts_per_file = 1; //my chnages max_parts_per_file = 1; //my chnages 
+		
 	}
 
+	
 	if (FileOpener::TryGetCurrentSetting(opener, "s3_uploader_thread_limit", value)) {
 		max_upload_threads = value.GetValue<uint64_t>();
 	} else {
