@@ -71,8 +71,8 @@ struct ParsedS3Url {
 
 struct S3ConfigParams {
 	static constexpr uint64_t DEFAULT_MAX_FILESIZE = 800000000000; // 800GB
-	static constexpr uint64_t DEFAULT_MAX_PARTS_PER_FILE = 10000;  // AWS DEFAULT
-	static constexpr uint64_t DEFAULT_MAX_UPLOAD_THREADS = 50;
+	static constexpr uint64_t DEFAULT_MAX_PARTS_PER_FILE = 1;  // AWS DEFAULT
+	static constexpr uint64_t DEFAULT_MAX_UPLOAD_THREADS = 1;
 
 	uint64_t max_file_size;
 	uint64_t max_parts_per_file;
