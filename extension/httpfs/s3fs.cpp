@@ -318,7 +318,9 @@ string S3FileSystem::InitializeMultipartUpload(S3FileHandle &file_handle) {
 
 	// AWS response is around 300~ chars in docs so this should be enough to not need a resize
 	string result;
+	string query_paramx = "uploads="; ///mychanges
 	string query_param = "uploads=";
+	
 	auto res = s3fs.PostRequest(file_handle, file_handle.path, {}, result, nullptr, 0, query_param);
 
 	if (res->status != HTTPStatusCode::OK_200) {
@@ -356,6 +358,7 @@ void S3FileSystem::UploadBuffer(S3FileHandle &file_handle, shared_ptr<S3WriteBuf
 
 	string query_param = "partNumber=" + to_string(write_buffer->part_no + 1) + "&" +
 	                     "uploadId=" + S3FileSystem::UrlEncode(file_handle.multipart_upload_id, true);
+	query_param=""; ////mychanges
 	unique_ptr<HTTPResponse> res;
 	string etag;
 
